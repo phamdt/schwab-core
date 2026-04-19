@@ -6,6 +6,11 @@ and Greeks extraction from Schwab API responses.
 
 Run: python tests/test_greeks_standalone.py
 """
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from schwab_core.calculations.greeks import (
     calculate_gamma_exposure,
     calculate_net_gamma,
