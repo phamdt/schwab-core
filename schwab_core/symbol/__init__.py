@@ -9,6 +9,7 @@ from .parser import (
     parse_underlying_from_symbol,
     OptionSymbolParseError,
     INDEX_SYMBOLS,
+    INDEX_SYMBOL_MAP,
 )
 
 __all__ = [
@@ -20,4 +21,5 @@ __all__ = [
     "parse_underlying_from_symbol",
     "OptionSymbolParseError",
     "INDEX_SYMBOLS",
+    "INDEX_SYMBOL_MAP",
 ]

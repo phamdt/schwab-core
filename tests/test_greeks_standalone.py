@@ -9,21 +9,15 @@ Run: python tests/test_greeks_standalone.py
 import sys
 from pathlib import Path
 
-# Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-# Direct import to avoid __init__ dependency issues
-import importlib.util
-spec = importlib.util.spec_from_file_location("greeks", "calculations/greeks.py")
-greeks = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(greeks)
-
-# Import functions
-calculate_gamma_exposure = greeks.calculate_gamma_exposure
-calculate_net_gamma = greeks.calculate_net_gamma
-filter_strike_region = greeks.filter_strike_region
-extract_greeks_from_contract = greeks.extract_greeks_from_contract
-calculate_effective_gamma_exposure = greeks.calculate_effective_gamma_exposure
+from schwab_core.calculations.greeks import (
+    calculate_gamma_exposure,
+    calculate_net_gamma,
+    filter_strike_region,
+    extract_greeks_from_contract,
+    calculate_effective_gamma_exposure,
+)
 
 
 def test_calculate_gamma_exposure():

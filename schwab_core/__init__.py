@@ -1,20 +1,24 @@
 """
-Stable import path `schwab_core.*` for subpackages installed at repo top level.
+Schwab Core - Shared business logic for broker API integration.
 
-The setuptools layout exposes `calculations`, `transformers`, etc. as top-level
-packages. This module aliases them under `schwab_core` for consistent imports.
+Subpackages:
+- broker: Broker abstraction layer (Schwab, Tradier, extensible)
+- calculations: Greeks, P&L
+- position: Classification (long/short, credit/debit)
+- strategy: Detection (vertical spreads, iron butterfly, etc.)
+- symbol: Normalization, parsing
+- transformers: Data transformations (accounts, positions, option chains)
+- utils: Shared constants
 """
-import importlib
-import sys
 
-# calculations.pnl imports schwab_core.utils.constants — register utils first
-_utils = importlib.import_module("utils")
-sys.modules["schwab_core.utils"] = _utils
-_constants = importlib.import_module("utils.constants")
-sys.modules["schwab_core.utils.constants"] = _constants
+__version__ = "0.2.0"
 
-for _name in ("calculations", "transformers", "position", "strategy", "symbol"):
-    _mod = importlib.import_module(_name)
-    sys.modules[f"schwab_core.{_name}"] = _mod
-
-__all__ = ["calculations", "transformers", "position", "strategy", "symbol", "utils"]
+__all__ = [
+    "broker",
+    "calculations",
+    "position",
+    "strategy",
+    "symbol",
+    "transformers",
+    "utils",
+]

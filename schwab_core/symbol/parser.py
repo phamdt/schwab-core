@@ -15,6 +15,23 @@ from typing import Dict, Optional, List, Any
 # Index symbols that use special formatting
 INDEX_SYMBOLS = ['SPX', 'SPXW', 'NDX', 'RUT', 'VIX', 'DJX']
 
+# Known index symbols that require $ prefix for Schwab API
+INDEX_SYMBOL_MAP = {
+    'SPX': '$SPX',
+    'XSP': '$SPX',
+    'SPXW': '$SPXW',
+    'COMPX': '$COMPX',
+    'COMP': '$COMP',
+    'DJI': '$DJI',
+    'VIX': '$VIX',
+    'NDX': '$NDX',
+    'NIKK': '$NIKK',
+    'SSEC': '$SSEC',
+    'HSI': '$HSI',
+    'RUT': '$RUT',
+    'DJX': '$DJX',
+}
+
 
 class OptionSymbolParseError(Exception):
     """Exception raised when unable to parse option symbol."""
@@ -24,23 +41,26 @@ class OptionSymbolParseError(Exception):
 def normalize_symbol_for_schwab(symbol: str) -> str:
     """
     Normalize symbol for Schwab API format.
-    
+
+    Indices require $ prefix (e.g., SPX -> $SPX, XSP -> $SPX).
+    Option symbols with date/strike suffixes are left unchanged.
+    Stock symbols are returned as-is.
+
     Args:
-        symbol: Option symbol in any format
-        
+        symbol: Ticker or option symbol in any format
+
     Returns:
         Normalized symbol string
     """
-    # Remove spaces
     symbol = symbol.strip()
-    
-    # For index options, ensure proper spacing
-    for index in INDEX_SYMBOLS:
-        if symbol.startswith(index):
-            # SPX format: SPXW  251113C06815000
-            # Ensure double space after symbol
-            return symbol
-    
+
+    if symbol.startswith('$'):
+        return symbol
+
+    upper = symbol.upper()
+    if upper in INDEX_SYMBOL_MAP:
+        return INDEX_SYMBOL_MAP[upper]
+
     return symbol
 
 

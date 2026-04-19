@@ -9,7 +9,7 @@ from datetime import datetime, timedelta, timezone
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from strategy.grouper import (
+from schwab_core.strategy.grouper import (
     group_by_time,
     group_by_expiration,
     group_by_underlying,

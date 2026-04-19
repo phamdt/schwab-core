@@ -1,7 +1,7 @@
 """Tests for SchwabAdapter — verifies canonical output shape."""
 
 import pytest
-from broker.schwab import SchwabAdapter
+from schwab_core.broker.schwab import SchwabAdapter
 
 
 @pytest.fixture()

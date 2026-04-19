@@ -1,0 +1,20 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "schwab-core"
+version = "0.2.0"
+description = "Broker-agnostic shared utilities (Schwab, Tradier, extensible)"
+authors = ["Finimal Team"]
+packages = [{include = "schwab_core"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0.0"
+pytest-cov = ">=4.0.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

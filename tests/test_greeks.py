@@ -11,7 +11,7 @@ from pathlib import Path
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from calculations.greeks import (
+from schwab_core.calculations.greeks import (
     calculate_gamma_exposure,
     calculate_net_gamma,
     filter_strike_region,
