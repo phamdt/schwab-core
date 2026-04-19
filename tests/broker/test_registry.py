@@ -2,8 +2,8 @@
 
 import pytest
 
-from broker.registry import get_broker, list_brokers, register_broker
-from broker.base import BrokerAdapter, Position, Account, OptionChainStrike
+from schwab_core.broker.registry import get_broker, list_brokers, register_broker
+from schwab_core.broker.base import BrokerAdapter, Position, Account, OptionChainStrike
 
 
 def test_list_brokers_includes_defaults():

@@ -8,7 +8,7 @@ from pathlib import Path
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from strategy.iron_butterfly import (
+from schwab_core.strategy.iron_butterfly import (
     detect_iron_butterfly,
     validate_iron_butterfly_quantities
 )

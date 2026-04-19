@@ -1,7 +1,7 @@
 """Tests for TradierAdapter — verifies canonical output shape."""
 
 import pytest
-from broker.tradier import TradierAdapter
+from schwab_core.broker.tradier import TradierAdapter
 
 
 @pytest.fixture()
