@@ -4,7 +4,7 @@ Broker registry — resolve a BrokerAdapter by name.
 Usage:
     from broker import get_broker
 
-    adapter = get_broker("schwab")        # or "tradier"
+    adapter = get_broker("schwab")
     positions = adapter.parse_positions(raw_api_response)
 
 Adding a 3rd broker:
@@ -18,13 +18,12 @@ from typing import Dict
 
 from .base import BrokerAdapter
 from .schwab import SchwabAdapter
-from .tradier import TradierAdapter
 
 _registry: Dict[str, BrokerAdapter] = {}
 
 
 def _bootstrap() -> None:
-    for adapter in (SchwabAdapter(), TradierAdapter()):
+    for adapter in (SchwabAdapter(),):
         _registry[adapter.name] = adapter
 
 
@@ -36,7 +35,7 @@ def get_broker(name: str) -> BrokerAdapter:
     Return the registered BrokerAdapter for *name*.
 
     Args:
-        name: Broker identifier (e.g. 'schwab', 'tradier')
+        name: Broker identifier (e.g. 'schwab')
 
     Raises:
         KeyError: If broker is not registered
