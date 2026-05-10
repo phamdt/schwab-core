@@ -74,7 +74,7 @@ class BrokerAdapter(ABC):
     @property
     @abstractmethod
     def name(self) -> str:
-        """Unique broker identifier (e.g. 'schwab', 'tradier')."""
+        """Unique broker identifier (e.g. 'schwab')."""
 
     @abstractmethod
     def parse_positions(self, raw: Any) -> List[Position]:

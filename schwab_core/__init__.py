@@ -2,7 +2,7 @@
 Schwab Core - Shared business logic for broker API integration.
 
 Subpackages:
-- broker: Broker abstraction layer (Schwab, Tradier, extensible)
+- broker: Broker abstraction layer (Schwab; extensible)
 - calculations: Greeks, P&L
 - position: Classification (long/short, credit/debit)
 - strategy: Detection (vertical spreads, iron butterfly, etc.)

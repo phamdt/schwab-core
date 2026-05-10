@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "schwab-core"
 version = "0.2.0"
-description = "Broker-agnostic shared utilities (Schwab, Tradier, extensible)"
+description = "Schwab-focused shared utilities (broker response normalization; extensible registry)"
 authors = ["Finimal Team"]
 packages = [{include = "schwab_core"}]
 

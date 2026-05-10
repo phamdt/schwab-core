@@ -1,6 +1,7 @@
 """
-Broker abstraction layer — swap between Schwab, Tradier, or any future broker
-by name without changing consumer code.
+Broker abstraction layer — Schwab response normalization (extensible via register_broker).
+
+Tradier market-data HTTP belongs in the ``tradier-market`` package, not here.
 """
 
 from .base import BrokerAdapter, Position, Account, OptionContract, OptionChainStrike

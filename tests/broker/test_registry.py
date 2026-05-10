@@ -9,7 +9,6 @@ from schwab_core.broker.base import BrokerAdapter, Position, Account, OptionChai
 def test_list_brokers_includes_defaults():
     brokers = list_brokers()
     assert "schwab" in brokers
-    assert "tradier" in brokers
 
 
 def test_get_broker_schwab():
@@ -17,14 +16,8 @@ def test_get_broker_schwab():
     assert adapter.name == "schwab"
 
 
-def test_get_broker_tradier():
-    adapter = get_broker("tradier")
-    assert adapter.name == "tradier"
-
-
 def test_get_broker_case_insensitive():
     assert get_broker("Schwab").name == "schwab"
-    assert get_broker("TRADIER").name == "tradier"
 
 
 def test_get_broker_unknown_raises():
